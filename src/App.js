@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './App.css';
 import UserForm from './components/UserForm'
 
@@ -6,7 +7,11 @@ class App extends Component {
   getUser = (e) => {
       e.preventDefault();
       const user = e.target.elements.username.value;
-      console.log(user);
+      
+      axios.get(`https://api.github.com/users/${user}`)
+      .then((res) => {
+        console.log(res);
+      })
     }
   render() {
     return (
